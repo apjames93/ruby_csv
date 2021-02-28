@@ -15,6 +15,6 @@ Scaffold the project to get started quickly with ‘bundle gems’.
 - in irb run `RubyCsv.parse` to generate `output.csv` and `report.txt`
 
 ### TODOS: 
-    - pass a path to the `parse` method to pick a a csv to use. 
-    - think more about how to format dates and validation data entry for a better solution.
-    - more testing around `create_csv` and `parse`
+    - pass a path arg to the `parse` to change csv. 
+    - work more on formatting dates and validating data entry for a better solution.
+    - Add more testing around `create_csv` and `parse`
