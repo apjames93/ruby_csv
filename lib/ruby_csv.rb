@@ -8,7 +8,7 @@ module RubyCsv
   # private
 
   def self.format
-    csv_array = CSV.parse(File.read("csvs/input.csv"), headers: true)
+    csv_array = CSV.parse(File.read('data/input.csv'), headers: true)
     csv_array.map { |data| clean(data) }
   end
 
@@ -16,14 +16,14 @@ module RubyCsv
   def self.clean(data)
     hash = {}
     data.each do |key, v|
-    # removes all white space
-    value = v.nil? ? '' : v.gsub(/ /, '')
+      # removes all white space
+      value = v.nil? ? '' : v.gsub(/ /, '')
 
-      if key == 'phone_number'
-          hash[key] = phone_number_format(value)
-      else
-          hash[key] = value
-      end
+      hash[key] = if key == 'phone_number'
+                    phone_number_format(value)
+                  else
+                    value
+                  end
     end
     hash
   end
@@ -37,8 +37,8 @@ module RubyCsv
   end
 
   private_class_method(
+    :format,
     :phone_number_format,
     :clean
   )
-
 end
