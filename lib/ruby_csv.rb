@@ -5,10 +5,20 @@ module RubyCsv
   def self.parse
     format_data = format
     create_csv(format_data)
+    report_txt(format_data)
   end
 
   # private
 
+  # loops over array and makes a report.txt file
+  def self.report_txt(array)
+    txt = ''
+    array.each do |hash|
+      txt.concat("#{hash['first_name']} #{hash['last_name']} was born on #{hash['dob']} their effective_date is #{hash['effective_date']} call them at #{hash['phone_number']} and say hello\n")
+    end
+    File.open("data/report.txt", "w+") { |f| f.write(txt) }
+  end
+  
   # takes array of hashes to write to csv
   def self.create_csv(array)
     path = 'data/output.csv'
@@ -72,6 +82,7 @@ module RubyCsv
 
   private_class_method(
     :format,
+    :report_txt,
     :create_csv,
     :date_format,
     :phone_number_format,
