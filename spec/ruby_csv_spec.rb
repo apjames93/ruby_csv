@@ -64,11 +64,16 @@ RSpec.describe RubyCsv do
                           'first_name' => 'Brent',
                           'last_name' => 'Wilson',
                           'member_id' => 'jk909009',
-                          'phone_number' => '+13038873456',
+                          'phone_number' => '+13038873456'
                         }])
     path = 'data/output.csv'
     made_it = File.exist?(path)
     expect(made_it).to eq(made_it)
     File.delete(path) if made_it
+  end
+
+  it "format array of data" do
+    data = RubyCsv.send(:format)
+    expect(data.length).to eq(14)
   end
 end
