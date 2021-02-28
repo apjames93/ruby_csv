@@ -4,9 +4,19 @@ require 'date'
 module RubyCsv
   def self.parse
     format_data = format
+    create_csv(format_data)
   end
 
   # private
+
+  # takes array of hashes to write to csv
+  def self.create_csv(array)
+    path = 'data/output.csv'
+    CSV.open(path, 'wb') do |csv|
+      csv << array.first.keys
+      array.each { |hash| csv << hash.values }
+    end
+  end
 
   def self.format
     csv_array = CSV.parse(File.read('data/input.csv'), headers: true)
@@ -62,6 +72,7 @@ module RubyCsv
 
   private_class_method(
     :format,
+    :create_csv,
     :date_format,
     :phone_number_format,
     :clean

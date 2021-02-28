@@ -55,4 +55,20 @@ RSpec.describe RubyCsv do
                          'phone_number' => '+13038873456'
                        })
   end
+
+  it 'create_csv creates a file named output.csv' do
+    date = RubyCsv.send(:create_csv, [{
+                          'dob' => '1988-01-01',
+                          'effective_date' => '2011-11-17',
+                          'expiry_date' => '2012-11-17',
+                          'first_name' => 'Brent',
+                          'last_name' => 'Wilson',
+                          'member_id' => 'jk909009',
+                          'phone_number' => '+13038873456',
+                        }])
+    path = 'data/output.csv'
+    made_it = File.exist?(path)
+    expect(made_it).to eq(made_it)
+    File.delete(path) if made_it
+  end
 end
