@@ -22,8 +22,8 @@ module RubyCsv
 
       hash[key] = if key == 'phone_number'
                     phone_number_format(value)
-                  elsif ['dob', 'effective_date', 'expiry_date'].include?(key)
-                      date_format(value)
+                  elsif %w[dob effective_date expiry_date].include?(key)
+                    date_format(value)
                   else
                     value
                   end
@@ -39,28 +39,26 @@ module RubyCsv
     formatted_number.length != 12 ? 'Invalid number' : formatted_number
   end
 
-    # parse date string to YYYY-MM-DD for the diff formats save in the csv
-    def self.date_format(date_string)
-      if date_string.include?('/')
-         # check if the last string in the array has a length of 4 if so that is the year
-         # ex : 1/7/1988 = ['1, '7', '1988']
-         if date_string.split('/').last.length == 4
-           return Date::strptime(date_string, '%m/%d/%Y').to_s
-         end 
-         # other date format with '/' ex: '1/12/88'
-         return Date::strptime(date_string, '%m/%d/%y').to_s
-      end
+  # parse date string to YYYY-MM-DD for the diff formats save in the csv
+  def self.date_format(date_string)
+    if date_string.include?('/')
+      # check if the last string in the array has a length of 4 if so that is the year
+      # ex : 1/7/1988 = ['1, '7', '1988']
+      return Date.strptime(date_string, '%m/%d/%Y').to_s if date_string.split('/').last.length == 4
 
-      if date_string.include?('-')
-         # check if the first string in the array has a length of 4 if so that is the year
-         # ex : 1988-02-12 = ['1988', '02', '12']
-        if  date_string.split('-').first.length == 4
-          return Date::strptime(date_string, '%Y-%m-%d').to_s
-        end 
-        # other date format with '-' ex: '1-11-88'
-        return Date::strptime(date_string, '%m-%d-%y').to_s
-      end
+      # other date format with '/' ex: '1/12/88'
+      return Date.strptime(date_string, '%m/%d/%y').to_s
     end
+
+    if date_string.include?('-')
+      # check if the first string in the array has a length of 4 if so that is the year
+      # ex : 1988-02-12 = ['1988', '02', '12']
+      return Date.strptime(date_string, '%Y-%m-%d').to_s if date_string.split('-').first.length == 4
+
+      # other date format with '-' ex: '1-11-88'
+      Date.strptime(date_string, '%m-%d-%y').to_s
+    end
+  end
 
   private_class_method(
     :format,

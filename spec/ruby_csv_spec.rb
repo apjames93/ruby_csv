@@ -17,7 +17,7 @@ RSpec.describe RubyCsv do
     expect(number).to eq('Invalid number')
   end
 
-  it "parse DateTime to return yyyy-mm-dd" do
+  it 'parse DateTime to return yyyy-mm-dd' do
     date = RubyCsv.send(:date_format, '12/12/2010')
     expect(date).to eq('2010-12-12')
 
