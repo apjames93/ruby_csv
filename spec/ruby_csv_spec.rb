@@ -33,4 +33,26 @@ RSpec.describe RubyCsv do
     date = RubyCsv.send(:date_format, '')
     expect(date).to eq(nil)
   end
+
+  it 'clean formats a hash key values' do
+    hash = RubyCsv.send(:clean, {
+                          'first_name' => 'Brent ',
+                          'last_name' => ' Wilson',
+                          'dob' => '1/1/1988',
+                          'member_id' => 'jk 909009',
+                          'effective_date' => '9/30/19',
+                          'expiry_date' => '1-11-88',
+                          'phone_number' => '(303) 887 3456'
+                        })
+
+    expect(hash).to eq({
+                         'dob' => '1988-01-01',
+                         'effective_date' => '2019-09-30',
+                         'expiry_date' => '1988-01-11',
+                         'first_name' => 'Brent',
+                         'last_name' => 'Wilson',
+                         'member_id' => 'jk909009',
+                         'phone_number' => '+13038873456'
+                       })
+  end
 end
