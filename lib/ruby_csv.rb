@@ -2,12 +2,15 @@ require 'csv'
 
 module RubyCsv
   def self.parse
-    csv_array = CSV.parse(File.read("data/input.csv"), headers: true)
-    format_data = csv_array.map { |data| clean(data) }
-    puts format_data
+    format_data = format
   end
 
   # private
+
+  def self.format
+    csv_array = CSV.parse(File.read("csvs/input.csv"), headers: true)
+    csv_array.map { |data| clean(data) }
+  end
 
   # loops over key values and formats key values
   def self.clean(data)
