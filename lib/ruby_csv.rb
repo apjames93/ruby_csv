@@ -16,9 +16,9 @@ module RubyCsv
     array.each do |hash|
       txt.concat("#{hash['first_name']} #{hash['last_name']} was born on #{hash['dob']} their effective_date is #{hash['effective_date']} call them at #{hash['phone_number']} and say hello\n")
     end
-    File.open("data/report.txt", "w+") { |f| f.write(txt) }
+    File.open('data/report.txt', 'w+') { |f| f.write(txt) }
   end
-  
+
   # takes array of hashes to write to csv
   def self.create_csv(array)
     path = 'data/output.csv'

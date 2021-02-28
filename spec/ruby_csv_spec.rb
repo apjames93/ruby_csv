@@ -72,22 +72,22 @@ RSpec.describe RubyCsv do
     File.delete(path) if made_it
   end
 
-  it "format array of data" do
+  it 'format array of data' do
     data = RubyCsv.send(:format)
     expect(data.length).to eq(14)
   end
 
-  it "report_txt creates a file named report.txt" do
+  it 'report_txt creates a file named report.txt' do
     date = RubyCsv.send(:report_txt, [{
-      "dob" => "1988-01-01",
-      "effective_date" => "2011-11-17",
-      "expiry_date" => "2012-11-17",
-      "first_name" => "Brent",
-      "last_name" => "Wilson",
-      "member_id" => "jk909009",
-      "phone_number" => "+13038873456",
-    }])
-    
+                          'dob' => '1988-01-01',
+                          'effective_date' => '2011-11-17',
+                          'expiry_date' => '2012-11-17',
+                          'first_name' => 'Brent',
+                          'last_name' => 'Wilson',
+                          'member_id' => 'jk909009',
+                          'phone_number' => '+13038873456'
+                        }])
+
     path = 'data/report.txt'
     file = File.open(path)
     has_txt = file.read.include?('Brent Wilson was born on 1988-01-01 their effective_date is 2011-11-17 call them at +13038873456 and say hello')
