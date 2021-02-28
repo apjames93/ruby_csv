@@ -16,4 +16,21 @@ RSpec.describe RubyCsv do
     number = RubyCsv.send(:phone_number_format, nil)
     expect(number).to eq('Invalid number')
   end
+
+  it "parse DateTime to return yyyy-mm-dd" do
+    date = RubyCsv.send(:date_format, '12/12/2010')
+    expect(date).to eq('2010-12-12')
+
+    date = RubyCsv.send(:date_format, '1988-02-12')
+    expect(date).to eq('1988-02-12')
+
+    date = RubyCsv.send(:date_format, '6/6/99')
+    expect(date).to eq('1999-06-06')
+
+    date = RubyCsv.send(:date_format, '1-11-88')
+    expect(date).to eq('1988-01-11')
+
+    date = RubyCsv.send(:date_format, '')
+    expect(date).to eq(nil)
+  end
 end
