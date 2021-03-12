@@ -4,16 +4,16 @@ RSpec.describe RubyCsv do
   end
 
   it 'phone_number_format returns number to be E.164 format or return invalid number' do
-    number = RubyCsv.send(:phone_number_format, '(303) 887 3456')
+    number = PhoneFun.phone_number_format('(303) 887 3456')
     expect(number).to eq('+13038873456')
 
-    number = RubyCsv.send(:phone_number_format, '303-333-9987')
+    number = PhoneFun.phone_number_format('303-333-9987')
     expect(number).to eq('+13033339987')
 
-    number = RubyCsv.send(:phone_number_format, '13039873345')
+    number = PhoneFun.phone_number_format('13039873345')
     expect(number).to eq('+13039873345')
 
-    number = RubyCsv.send(:phone_number_format, nil)
+    number = PhoneFun.phone_number_format(nil)
     expect(number).to eq('Invalid number')
   end
 
@@ -57,6 +57,8 @@ RSpec.describe RubyCsv do
   end
 
   it 'create_csv creates a file named output.csv' do
+    path = 'data/output.csv'
+
     date = RubyCsv.send(:create_csv, [{
                           'dob' => '1988-01-01',
                           'effective_date' => '2011-11-17',
@@ -65,20 +67,19 @@ RSpec.describe RubyCsv do
                           'last_name' => 'Wilson',
                           'member_id' => 'jk909009',
                           'phone_number' => '+13038873456'
-                        }])
-    path = 'data/output.csv'
+                        }], path)
     made_it = File.exist?(path)
     expect(made_it).to eq(made_it)
     File.delete(path) if made_it
   end
 
   it 'format array of data' do
-    data = RubyCsv.send(:format)
+    data = RubyCsv.send(:format, 'data/input.csv')
     expect(data.length).to eq(14)
   end
 
   it 'report_txt creates a file named report.txt' do
-    date = RubyCsv.send(:report_txt, [{
+    date = Report.report_txt([{
                           'dob' => '1988-01-01',
                           'effective_date' => '2011-11-17',
                           'expiry_date' => '2012-11-17',

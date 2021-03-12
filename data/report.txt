@@ -1,14 +1,14 @@
-Jason Bateman was born on 2010-12-12 their effective_date is  call them at Invalid number and say hello
-Brent Wilson was born on 1988-01-01 their effective_date is 2019-09-30 call them at +13038873456 and say hello
-Antonio Brown was born on 1966-02-02 their effective_date is 2019-09-30 call them at +13033339987 and say hello
-Jerry Jones was born on 1999-06-06 their effective_date is 2016-08-04 call them at Invalid number and say hello
-Baker Mayfield was born on 1988-01-04 their effective_date is 2019-09-30 call them at +13039873345 and say hello
-Serena Williams was born on 1948-04-04 their effective_date is 2017-11-11 call them at +14445559876 and say hello
-Jake Jabs was born on 1988-01-06 their effective_date is 2019-09-30 call them at +14445559877 and say hello
-Mary Poppins was born on 1988-01-07 their effective_date is 2019-09-30 call them at +14445559878 and say hello
-Sally JesseRephael was born on 1988-01-08 their effective_date is 2019-09-30 call them at +14445559879 and say hello
-Bruce Springsteen was born on 1988-01-09 their effective_date is 2019-09-30 call them at +14445559880 and say hello
-Jason Statham was born on 1988-02-12 their effective_date is 2019-09-30 call them at +16065559886 and say hello
-Lenny Bruce was born on 1988-01-11 their effective_date is 2019-09-30 call them at +12025559882 and say hello
-Martin Short was born on 1988-01-12 their effective_date is 2019-09-30 call them at +14045559883 and say hello
-Benny Samson was born on 1988-01-13 their effective_date is 2019-09-30 call them at +14425559884 and say hello
+Jason Bateman Invalid number 
+Brent Wilson +13038873456 
+Antonio Brown +13033339987 
+Jerry Jones Invalid number 
+Baker Mayfield +13039873345 
+Serena Williams +14445559876 
+Jake Jabs +14445559877 
+Mary Poppins +14445559878 
+Sally JesseRephael +14445559879 
+Bruce Springsteen +14445559880 
+Jason Statham +16065559886 
+Lenny Bruce +12025559882 
+Martin Short +14045559883 
+Benny Samson +14425559884 
